@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D9F02B07-1E43-47E0-AE2E-E13BE5435687}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dfn.Etl</RootNamespace>
+    <AssemblyName>Dfn.Etl</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\imis-etl-build-dev\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncIO, Version=0.1.17.0, Culture=neutral, PublicKeyToken=44a94435bd6f33f8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AsyncIO.0.1.17.0\lib\net40\AsyncIO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\..\3rdParty\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\..\..\3rdParty\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1213">
+      <HintPath>..\..\..\3rdParty\Common.Logging.Log4Net1213.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NetMQ, Version=3.3.2.2, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NetMQ.3.3.2.2\lib\net40\NetMQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZeroMQ, Version=4.1.0.21, Culture=neutral, PublicKeyToken=4a9630883fd6c563, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ZeroMQ.4.1.0.21\lib\net40\ZeroMQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Blocks\BaseInputOutputBlock.cs" />
+    <Compile Include="Core\Blocks\ISourceBlock.cs" />
+    <Compile Include="Core\Blocks\SourceBlock.cs" />
+    <Compile Include="Core\Blocks\TargetBlock.cs" />
+    <Compile Include="Core\Blocks\TransformationBlock.cs" />
+    <Compile Include="Core\Functors\ITransformationBatchedFunctor.cs" />
+    <Compile Include="Core\IdasDataflowNetwork2.cs" />
+    <Compile Include="Core\Tasks\DataflowNetworkTaskBase.cs" />
+    <Compile Include="Core\Tasks\FinalizationTarget.cs" />
+    <Compile Include="Core\Tasks\IContentTask.cs" />
+    <Compile Include="Core\IMetadata.cs" />
+    <Compile Include="Core\ITransformationBatched.cs" />
+    <Compile Include="Core\Tasks\IContentSource.cs" />
+    <Compile Include="Core\Tasks\IContentTransform.cs" />
+    <Compile Include="Core\Tasks\IDataflowNetworkTask.cs" />
+    <Compile Include="Core\Tasks\DataflowNetworkDecoratorTask.cs" />
+    <Compile Include="Core\Tasks\ITransformationTask.cs" />
+    <Compile Include="Core\Tasks\Source.cs" />
+    <Compile Include="Core\Tasks\Target.cs" />
+    <Compile Include="Core\Tasks\TargetPerSingle.cs" />
+    <Compile Include="Core\Tasks\TaskLock.cs" />
+    <Compile Include="Core\Tasks\TransformManyToMany.cs" />
+    <Compile Include="Core\Tasks\TransformManyToSingle.cs" />
+    <Compile Include="Core\Tasks\TransformSingleToMany.cs" />
+    <Compile Include="Core\Tasks\TransformSingleToSingle.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTask.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTransformationBatched.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\DataflowWorkloadStatisticsDecoration.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\IWorkloadStatistics.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsBase.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorSource.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTarget.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTargetBatched.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTask.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTransformation.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTransformationBatched.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsDecoratorTransformMany.cs" />
+    <Compile Include="Crosscutting\WorkloadStatistics\WorkloadStatisticsZmqPublisher.cs" />
+    <Compile Include="Crosscutting\Logging\DataflowBrokenDecoration.cs" />
+    <Compile Include="Crosscutting\Logging\DataflowEmptyDecoration.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorTransformationBatched.cs" />
+    <Compile Include="Crosscutting\Logging\LoggingDecoratorTask.cs" />
+    <Compile Include="Crosscutting\Logging\SkipBrokenMessagesDecoratorTask.cs" />
+    <Compile Include="Crosscutting\Logging\SkipEmptyDecoratorSource.cs" />
+    <Compile Include="Crosscutting\Logging\SkipEmptyDecoratorTransformation.cs" />
+    <Compile Include="Crosscutting\Logging\SkipEmptyMessagesDecoratorTask.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorSource.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTask.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTransformationBatched.cs" />
+    <Compile Include="Dataflow\Actions\EnrichFilesWithSeqNr.cs" />
+    <Compile Include="Dataflow\Actions\PrepareAndGetFilesForProgress.cs" />
+    <Compile Include="Core\BrokenDataflowMessage.cs" />
+    <Compile Include="Core\CustomBlocks.cs" />
+    <Compile Include="Core\DataflowCasting.cs" />
+    <Compile Include="Core\DataflowNetwork.cs" />
+    <Compile Include="Core\DataflowNetworkConstituent.cs" />
+    <Compile Include="Core\DataflowNetworkException.cs" />
+    <Compile Include="Core\DataflowNetworkFailedException.cs" />
+    <Compile Include="Core\DataflowNetworkRecoverableErrorException.cs" />
+    <Compile Include="Core\DataflowNetworkUnrecoverableErrorDetectedException.cs" />
+    <Compile Include="Core\DefaultDataflowMessage.cs" />
+    <Compile Include="Core\Functors\ISourceFunctor.cs" />
+    <Compile Include="Core\Functors\ITargetBatchedFunctor.cs" />
+    <Compile Include="Core\Functors\ITargetFunctor.cs" />
+    <Compile Include="Core\Functors\ITransformationFunctor.cs" />
+    <Compile Include="Core\Functors\ITransformManyFunctor.cs" />
+    <Compile Include="Core\IBrokenDataFlowMessage.cs" />
+    <Compile Include="Core\ICancelNetwork.cs" />
+    <Compile Include="Core\IDataflowMessage.cs" />
+    <Compile Include="Core\IDataflowNetwork.cs" />
+    <Compile Include="Core\ISource.cs" />
+    <Compile Include="Core\ISourceAgent.cs" />
+    <Compile Include="Core\ITarget.cs" />
+    <Compile Include="Core\ITargetBatched.cs" />
+    <Compile Include="Core\ITransformation.cs" />
+    <Compile Include="Core\ITransformMany.cs" />
+    <Compile Include="Core\SourceAgent.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\DataflowExceptionDecoration.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorSource.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTarget.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTargetBatched.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTransformation.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionDecoratorTransformMany.cs" />
+    <Compile Include="Crosscutting\ExceptionHandling\ExceptionMessages.cs" />
+    <Compile Include="Crosscutting\Logging\CommonLogAgent.cs" />
+    <Compile Include="Crosscutting\Logging\ConsoleLogAgent.cs" />
+    <Compile Include="Crosscutting\Logging\DataflowLoggingDecoration.cs" />
+    <Compile Include="Crosscutting\Logging\ILogAgent.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\DataflowStatisticsLoggingDecoration.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\IStatisticsLogger.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorSource.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorTarget.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorTargetBatched.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorTransformation.cs" />
+    <Compile Include="Crosscutting\Logging\LogDecoratorTransformMany.cs" />
+    <Compile Include="Crosscutting\Logging\LogLevel.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTarget.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTargetBatched.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTransformation.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLogDecoratorTransformMany.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsHelper.cs" />
+    <Compile Include="Crosscutting\Logging\Statistics\StatisticsLoggerBase.cs" />
+    <Compile Include="Dataflow\Actions\ValidateXmlByXsd.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RealtimeWorkloadService\RealtimeWorkloadService.csproj">
+      <Project>{a20c5f9f-24c2-4798-94b4-82b421793af3}</Project>
+      <Name>RealtimeWorkloadService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" Condition="Exists('$(SolutionDir)\.nuget\nuget.targets')" />
+  <Import Project="..\..\packages\ZeroMQ.4.1.0.21\build\net40\ZeroMQ.targets" Condition="Exists('..\..\packages\ZeroMQ.4.1.0.21\build\net40\ZeroMQ.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\ZeroMQ.4.1.0.21\build\net40\ZeroMQ.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\ZeroMQ.4.1.0.21\build\net40\ZeroMQ.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

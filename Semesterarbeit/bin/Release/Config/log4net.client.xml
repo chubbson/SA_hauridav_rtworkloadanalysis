@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<log4net>
+  <!-- log info daily to the default idas log, keep it 30 days -->
+  <appender name="DefaultFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:\Temp\pg\log\idas.log" />
+    <threshold value="INFO" />
+    <staticLogFileName value="true" />
+    <appendToFile value="true" />
+    <datePattern value="yyyyMMdd" />
+    <maximumFileSize value="10MB" />
+    <maxSizeRollBackups value="30" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger : %message%newline" />
+    </layout>
+  </appender>
+
+  <!-- log DEBUG to a max 100 MB debug log -->
+  <appender name="DebugFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:\Temp\pg\log\debug.log" />
+    <threshold value="DEBUG" />
+    <staticLogFileName value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Size" />
+    <maximumFileSize value="100MB" />
+    <maxSizeRollBackups value="10" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger : %message%newline" />
+    </layout>
+  </appender>
+
+  <!-- log WARN to a max 10 MB critical log -->
+  <appender name="CriticalFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:\Temp\pg\log\critical.log" />
+    <threshold value="WARN" />
+    <staticLogFileName value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Size" />
+    <maximumFileSize value="10MB" />
+    <maxSizeRollBackups value="10" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger : %message%newline" />
+    </layout>
+  </appender>
+
+  <!-- log TRACE to a max 10 MB critical log -->
+  <appender name="TraceFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:\Temp\pg\log\trace.log" />
+    <threshold value="TRACE" />
+    <staticLogFileName value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Size" />
+    <maximumFileSize value="10MB" />
+    <maxSizeRollBackups value="10" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger : %message%newline" />
+    </layout>
+  </appender>
+
+  <appender name="UdpAppender" type="log4net.Appender.UdpAppender">
+    <param name="RemoteAddress" value="localhosttwo" />
+    <param name="RemotePort" value="8080" />
+    <layout type="log4net.Layout.XmlLayoutSchemaLog4j, log4net" />
+  </appender>
+
+  <!-- change loglevel here, to have more logging infos in the debug.log -->
+  <category name="idasNET">
+    <priority value="DEBUG"/>
+  </category>
+
+  <root>
+    <level value="DEBUG" />
+    <!--<appender-ref ref="UdpAppender" />-->
+    <appender-ref ref="DefaultFileAppender" />
+    <appender-ref ref="DebugFileAppender" />
+  </root>
+
+  <logger name="PGImportRunEnvironmentPipeline">
+    <appender-ref ref="CriticalFileAppender" />
+    <appender-ref ref="TraceFileAppender" />
+  </logger>
+
+  <logger name="PGImportRunEnvironmentPipeline2">
+    <appender-ref ref="CriticalFileAppender" />
+  </logger>
+
+</log4net>

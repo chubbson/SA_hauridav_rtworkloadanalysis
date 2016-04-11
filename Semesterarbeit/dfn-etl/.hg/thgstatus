@@ -1,0 +1,13 @@
+rImis.Etl
+rImis.Etl.Tests
+rImis.Etl.Tests/Crosscutting/ExceptionHandling
+rImis.Etl.Tests/Properties
+rImis.Etl/Core
+rImis.Etl/Core/Blocks
+rImis.Etl/Core/Functors
+rImis.Etl/Core/Tasks
+rImis.Etl/Crosscutting/ExceptionHandling
+rImis.Etl/Crosscutting/Logging
+rImis.Etl/Crosscutting/Logging/Statistics
+rImis.Etl/Dataflow/Actions
+rImis.Etl/Properties

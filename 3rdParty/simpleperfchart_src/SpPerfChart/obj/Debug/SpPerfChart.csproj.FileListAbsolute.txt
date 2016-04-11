@@ -1,0 +1,6 @@
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\bin\Debug\SpPerfChart.dll
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\bin\Debug\SpPerfChart.pdb
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\obj\Debug\SpPerfChart.PerfChart.resources
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\obj\Debug\SpPerfChart.csproj.GenerateResource.Cache
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\obj\Debug\SpPerfChart.dll
+C:\Devel\misc\simpleperfchart_src\SpPerfChart\obj\Debug\SpPerfChart.pdb

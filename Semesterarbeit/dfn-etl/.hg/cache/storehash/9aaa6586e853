@@ -1,0 +1,4 @@
+# ssh://hg.idas.imis.intra/idas/dev/imis-etl
+bookmarks = da39a3ee5e6b4b0d3255bfef95601890afd80709
+store/phaseroots = da39a3ee5e6b4b0d3255bfef95601890afd80709
+store/00changelog.i = d583c690d49fd449f9efc8e5ced5ada6cfaff22f
